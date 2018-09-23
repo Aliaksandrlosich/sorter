@@ -1,31 +1,45 @@
 class Sorter {
-  constructor() {
-    // your implementation
-  }
+  constructor(kek) {
+    this.kek = [];
+    this.compareFunction = function (a,b){
+      return a-b;
+    }
+}
 
   add(element) {
-    // your implementation
+   this.kek.push(element); 
   }
 
   at(index) {
-    // your implementation
+    return this.kek[index];
   }
 
   get length() {
-    // your implementation
+    return this.kek.length;
   }
 
   toArray() {
-    // your implementation
-  }
+    return this.kek;
+}
 
   sort(indices) {
-    // your implementation
+     var massiv = [];
+    for(var i = 0; i < indices.length; i++)
+    massiv[i] = this.kek[indices[i]];
+    indices.sort(function(a, b){ 
+      return a - b;
+    });
+    massiv.sort(this.compareFunction);
+    for(var i = 0; i < indices.length; i++)
+      this.kek[indices[i]] = massiv[i];
   }
+  
 
   setComparator(compareFunction) {
-    // your implementation
+    this.compareFunction = compareFunction;
   }
 }
+
+
 
 module.exports = Sorter;
